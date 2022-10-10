@@ -7,22 +7,22 @@
 
 import UIKit
 
+struct ImageData {
+	var imageName: String
+	var index: Int
+	var imageCount: Int
+}
+
 class DetailViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
-    var selectedImage: String?
-    var selectedPictureNumber: Int?
-    var totalPictures: Int?
-    
+	var imageDetail: ImageData?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Image \(selectedPictureNumber!) of \(totalPictures!)"
+		title = "Image \(imageDetail!.index) of \(imageDetail!.imageCount)"
         navigationItem.largeTitleDisplayMode = .never
-        
-        if let imageToLoad = selectedImage {
-            imageView.image = UIImage(named: imageToLoad)
-        }
+		imageView.image = UIImage(named: imageDetail!.imageName)
     }
     
     override func viewWillAppear(_ animated: Bool) {
